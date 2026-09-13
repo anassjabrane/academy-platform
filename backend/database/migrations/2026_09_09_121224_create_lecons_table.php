@@ -6,20 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('lecons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('formation_id')->constrained('formations')->cascadeOnDelete();
+            $table->string('titre');
+            $table->unsignedInteger('duree');
+            $table->unsignedInteger('ordre');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('lecons');
