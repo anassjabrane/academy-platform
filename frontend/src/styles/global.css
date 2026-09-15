@@ -1,3 +1,6 @@
+html, body, #root { margin: 0; padding: 0; width: 100%; min-height: 100vh; max-width: none !important; }
+* { box-sizing: border-box; }
+
 /* ═══════════════════════════════════════════
    ROOT VARIABLES & RESET
 ═══════════════════════════════════════════ */
@@ -532,4 +535,41 @@ footer {
   .formations-grid { grid-template-columns: 1fr; }
   .learn-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE ADDITIONS (mobile menu, forms, dashboards)
+═══════════════════════════════════════════ */
+.nav-burger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 36px; height: 36px; color: var(--navy, #0d1b4b); padding: 6px;
+}
+.nav-mobile-menu {
+  display: none; flex-direction: column; gap: 14px; padding: 16px 24px 24px;
+  border-top: 1px solid var(--gray-200, #e5e7eb); background: #fff;
+}
+.nav-mobile-menu .nav-search { width: 100%; }
+.nav-mobile-menu .nav-link { padding: 10px 0; cursor: pointer; font-weight: 600; }
+.nav-mobile-menu .btn-outline, .nav-mobile-menu .btn-primary { width: 100%; text-align: center; }
+
+@media (max-width: 900px) {
+  .nav-links-desktop, .nav-search-desktop, .nav-actions-desktop { display: none !important; }
+  .nav-burger { display: flex; align-items: center; justify-content: center; margin-left: auto; }
+  .nav-mobile-menu.nav-mobile-menu { display: flex; }
+  .nav-inner { padding: 0 16px; }
+
+  /* Auth pages : empile au lieu de cote a cote */
+  .auth-page { flex-direction: column; min-height: auto; }
+  .auth-left { padding: 40px 24px; }
+  .auth-left h2 { font-size: 26px; }
+  .auth-right { width: 100%; padding: 32px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .hero-inner { flex-direction: column; text-align: center; padding: 40px 16px; }
+  .hero h1 { font-size: 30px; }
+  .formations-grid { grid-template-columns: 1fr; padding: 0 16px; }
+  .stats-bar-inner { flex-wrap: wrap; gap: 16px; padding: 20px 16px; }
+  .course-detail { flex-direction: column; padding: 0 16px; }
 }
