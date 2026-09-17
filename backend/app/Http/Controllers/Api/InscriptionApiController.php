@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certificat;
 use App\Models\Formation;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
@@ -56,23 +57,34 @@ class InscriptionApiController extends Controller
     }
 
     /**
-     * Permet de mettre a jour la progression d'un etudiant sur une formation
-     * (par exemple, quand il termine une leçon).
+     * Met a jour la progression. Si elle atteint 100%, genere
+     * automatiquement un Certificat (s'il n'existe pas deja).
      */
     public function updateProgression(Request $request, $id)
     {
         $inscription = Inscription::where('etudiant_id', $request->user()->id)
+            ->with('certificat')
             ->findOrFail($id);
 
         $request->validate([
             'progression' => 'required|numeric|min:0|max:100',
         ]);
 
+        $termine = $request->progression >= 100;
+
         $inscription->update([
             'progression' => $request->progression,
-            'statut' => $request->progression >= 100 ? 'terminee' : 'en_cours',
+            'statut' => $termine ? 'terminee' : 'en_cours',
         ]);
 
-        return response()->json($inscription);
+        if ($termine && ! $inscription->certificat) {
+            Certificat::create([
+                'inscription_id' => $inscription->id,
+                'date_obtention' => now(),
+                'url_fichier' => null, // generation PDF reelle a prevoir en v2
+            ]);
+        }
+
+        return response()->json($inscription->fresh('certificat'));
     }
 }
