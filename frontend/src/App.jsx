@@ -17,6 +17,7 @@ import StudentDashboard from './pages/student/Dashboard/Dashboard';
 import MesFormations from './pages/student/MesFormations/MesFormations';
 import Catalogue from './pages/student/Catalogue/Catalogue';
 import Profil from './pages/student/Profil/Profil';
+import Certificats from './pages/student/Certificats/Certificats';
 
 import './styles/global.css';
 
@@ -52,7 +53,8 @@ export default function App() {
           <Route path="mes-formations" element={<MesFormations />} />
           <Route path="catalogue" element={<Catalogue />} />
           <Route path="profil" element={<Profil />} />
-          {/* À venir : progression, certificats, agenda, achievements, notes, parametres */}
+          <Route path="certificats" element={<Certificats />} />
+          {/* À venir : progression, agenda, achievements, notes, parametres */}
         </Route>
       </Routes>
     </BrowserRouter>
