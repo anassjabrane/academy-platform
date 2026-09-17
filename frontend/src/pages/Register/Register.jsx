@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
 import { register } from '../../api/auth';
 
 const DOMAINES = [
@@ -150,7 +151,9 @@ export default function Register() {
           </button>
 
           <div className="auth-divider">ou s'inscrire avec</div>
-          <button className="btn-social">🇬 Continuer avec Google</button>
+          <button className="btn-social" disabled title="Bientôt disponible">
+            <FcGoogle size={20} /> Continuer avec Google
+          </button>
 
           <div className="auth-footer-text">
             Déjà un compte ? <a onClick={() => navigate('/connexion')}>Se connecter</a>

@@ -9,11 +9,13 @@ import Register from './pages/Register/Register';
 import Formations from './pages/Formations/Formations';
 import CourseDetail from './pages/CourseDetail/CourseDetail';
 
-import AdminDashboard from './pages/Admin/Dashboard/Dashboard';
-import AdminFormations from './pages/Admin/Formations/Formations';
+import AdminDashboard from './pages/admin/Dashboard/Dashboard';
+import AdminFormations from './pages/admin/Formations/Formations';
+import AdminEtudiants from './pages/admin/Etudiants/Etudiants';
 
-import StudentDashboard from './pages/Student/Dashboard/Dashboard';
-import MesFormations from './pages/Student/MesFormations/MesFormations';
+import StudentDashboard from './pages/student/Dashboard/Dashboard';
+import MesFormations from './pages/student/MesFormations/MesFormations';
+import Catalogue from './pages/Student/Catalogue/Catalogue';
 
 import './styles/global.css';
 
@@ -40,13 +42,15 @@ export default function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
           <Route path="formations" element={<AdminFormations />} />
-          {/* À venir : etudiants, pipeline, finances, instructeurs, calendrier, rapports, parametres */}
+          <Route path="etudiants" element={<AdminEtudiants />} />
+          {/* À venir : pipeline, finances, instructeurs, calendrier, rapports, parametres */}
         </Route>
 
         <Route path="/dashboard" element={<StudentLayout />}>
           <Route index element={<StudentDashboard />} />
           <Route path="mes-formations" element={<MesFormations />} />
-          {/* À venir : catalogue, progression, certificats, agenda, achievements, notes, profil, parametres */}
+          <Route path="catalogue" element={<Catalogue />} />
+          {/* À venir : progression, certificats, agenda, achievements, notes, profil, parametres */}
         </Route>
       </Routes>
     </BrowserRouter>

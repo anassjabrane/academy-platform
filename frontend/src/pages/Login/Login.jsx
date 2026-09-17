@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
+import { FaLinkedinIn } from 'react-icons/fa';
 import { login } from '../../api/auth';
 
 /**
@@ -111,8 +113,12 @@ export default function Login() {
           </button>
 
           <div className="auth-divider">ou continuer avec</div>
-          <button className="btn-social">🇬 Google</button>
-          <button className="btn-social">🔷 LinkedIn</button>
+          <button className="btn-social" disabled title="Bientôt disponible">
+            <FcGoogle size={20} /> Google
+          </button>
+          <button className="btn-social" disabled title="Bientôt disponible">
+            <FaLinkedinIn size={20} color="#0A66C2" /> LinkedIn
+          </button>
 
           <div className="auth-footer-text">
             Pas encore de compte ? <a onClick={() => navigate('/inscription')}>S'inscrire gratuitement</a>

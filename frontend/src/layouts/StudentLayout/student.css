@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   DESIGN 
+   DESIGN TOKENS
 ═══════════════════════════════════════════════════════ */
 :root {
   --navy:        #0d1b4b;
@@ -573,5 +573,10 @@ button, input, select, textarea { font-family: inherit; }
   }
   .topbar { padding-left: 16px; }
   .stats-grid, .my-courses-grid { grid-template-columns: 1fr !important; }
+  #catalogue-grid { grid-template-columns: 1fr !important; }
   .table-wrap { overflow-x: auto; }
+}
+
+@media (max-width: 1024px) and (min-width: 901px) {
+  #catalogue-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
