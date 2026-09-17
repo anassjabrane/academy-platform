@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminApiController;
 use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\FormationApiController;
 use App\Http\Controllers\Api\InscriptionApiController;
@@ -15,6 +16,8 @@ Route::post('/login', [AuthApiController::class, 'login']);
 // ── Connecte (etudiant OU admin) : juste avoir un token valide ──
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthApiController::class, 'me']);
+    Route::put('/me', [AuthApiController::class, 'updateMe']);
+    Route::put('/me/password', [AuthApiController::class, 'updatePassword']);
     Route::post('/logout', [AuthApiController::class, 'logout']);
 });
 
@@ -28,9 +31,8 @@ Route::middleware(['auth:sanctum', 'role:etudiant'])->group(function () {
 
 // ── Reserve a l'administrateur ──
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
-    Route::get('/test-admin', fn () => response()->json(['message' => 'Wahed admin dakhel!']));
+    Route::get('/etudiants', [AdminApiController::class, 'etudiants']);
     // Route::post('/formations', [FormationApiController::class, 'store']);
     // Route::put('/formations/{id}', [FormationApiController::class, 'update']);
     // Route::delete('/formations/{id}', [FormationApiController::class, 'destroy']);
-    // Route::get('/etudiants', [AdminApiController::class, 'etudiants']);
 });

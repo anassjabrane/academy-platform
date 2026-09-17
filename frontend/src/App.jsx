@@ -15,7 +15,8 @@ import AdminEtudiants from './pages/admin/Etudiants/Etudiants';
 
 import StudentDashboard from './pages/student/Dashboard/Dashboard';
 import MesFormations from './pages/student/MesFormations/MesFormations';
-import Catalogue from './pages/Student/Catalogue/Catalogue';
+import Catalogue from './pages/student/Catalogue/Catalogue';
+import Profil from './pages/student/Profil/Profil';
 
 import './styles/global.css';
 
@@ -50,7 +51,8 @@ export default function App() {
           <Route index element={<StudentDashboard />} />
           <Route path="mes-formations" element={<MesFormations />} />
           <Route path="catalogue" element={<Catalogue />} />
-          {/* À venir : progression, certificats, agenda, achievements, notes, profil, parametres */}
+          <Route path="profil" element={<Profil />} />
+          {/* À venir : progression, certificats, agenda, achievements, notes, parametres */}
         </Route>
       </Routes>
     </BrowserRouter>
