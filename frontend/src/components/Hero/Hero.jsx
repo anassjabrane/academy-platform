@@ -36,6 +36,11 @@ export default function Hero() {
               Explorer les formations
             </button>
           </div>
+          <div className="hero-slider-dots">
+            <div className="hero-dot active" />
+            <div className="hero-dot" />
+            <div className="hero-dot" />
+          </div>
         </div>
         <div className="hero-emoji-wrap">👩‍💻</div>
       </div>
