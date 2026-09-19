@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\AdminApiController;
 use App\Http\Controllers\Api\AuthApiController;
+use App\Http\Controllers\Api\FinanceApiController;
 use App\Http\Controllers\Api\FormationApiController;
 use App\Http\Controllers\Api\InscriptionApiController;
 use App\Http\Controllers\Api\InstructeurApiController;
+use App\Http\Controllers\Api\LeadApiController;
 use Illuminate\Support\Facades\Route;
 
 // ── Public : accessible a tous, meme sans compte ──
@@ -37,6 +39,13 @@ Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::post('/instructeurs', [InstructeurApiController::class, 'store']);
     Route::put('/instructeurs/{id}', [InstructeurApiController::class, 'update']);
     Route::delete('/instructeurs/{id}', [InstructeurApiController::class, 'destroy']);
+    Route::get('/finances', [FinanceApiController::class, 'index']);
+    Route::put('/factures/{id}', [FinanceApiController::class, 'updateStatut']);
+    Route::get('/leads', [LeadApiController::class, 'index']);
+    Route::post('/leads', [LeadApiController::class, 'store']);
+    Route::put('/leads/{id}', [LeadApiController::class, 'update']);
+    Route::put('/leads/{id}/statut', [LeadApiController::class, 'updateStatut']);
+    Route::delete('/leads/{id}', [LeadApiController::class, 'destroy']);
     // Route::post('/formations', [FormationApiController::class, 'store']);
     // Route::put('/formations/{id}', [FormationApiController::class, 'update']);
     // Route::delete('/formations/{id}', [FormationApiController::class, 'destroy']);

@@ -13,6 +13,8 @@ import AdminDashboard from './pages/admin/Dashboard/Dashboard';
 import AdminFormations from './pages/admin/Formations/Formations';
 import AdminEtudiants from './pages/admin/Etudiants/Etudiants';
 import AdminInstructeurs from './pages/admin/Instructeurs/Instructeurs';
+import AdminFinances from './pages/admin/Finances/Finances';
+import AdminPipeline from './pages/admin/Pipeline/Pipeline';
 
 import StudentDashboard from './pages/student/Dashboard/Dashboard';
 import MesFormations from './pages/student/MesFormations/MesFormations';
@@ -47,7 +49,9 @@ export default function App() {
           <Route path="formations" element={<AdminFormations />} />
           <Route path="etudiants" element={<AdminEtudiants />} />
           <Route path="instructeurs" element={<AdminInstructeurs />} />
-          {/* À venir : pipeline, finances, calendrier, rapports, parametres */}
+          <Route path="finances" element={<AdminFinances />} />
+          <Route path="pipeline" element={<AdminPipeline />} />
+          {/* À venir : calendrier, rapports, parametres */}
         </Route>
 
         <Route path="/dashboard" element={<StudentLayout />}>
