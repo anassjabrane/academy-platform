@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             CategorieSeeder::class,
             FormationSeeder::class,
+            InstructeurSeeder::class,
         ]);
     }
 }

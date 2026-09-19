@@ -12,6 +12,7 @@ import CourseDetail from './pages/CourseDetail/CourseDetail';
 import AdminDashboard from './pages/admin/Dashboard/Dashboard';
 import AdminFormations from './pages/admin/Formations/Formations';
 import AdminEtudiants from './pages/admin/Etudiants/Etudiants';
+import AdminInstructeurs from './pages/admin/Instructeurs/Instructeurs';
 
 import StudentDashboard from './pages/student/Dashboard/Dashboard';
 import MesFormations from './pages/student/MesFormations/MesFormations';
@@ -45,7 +46,8 @@ export default function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="formations" element={<AdminFormations />} />
           <Route path="etudiants" element={<AdminEtudiants />} />
-          {/* À venir : pipeline, finances, instructeurs, calendrier, rapports, parametres */}
+          <Route path="instructeurs" element={<AdminInstructeurs />} />
+          {/* À venir : pipeline, finances, calendrier, rapports, parametres */}
         </Route>
 
         <Route path="/dashboard" element={<StudentLayout />}>

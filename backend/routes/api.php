@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminApiController;
 use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\FormationApiController;
 use App\Http\Controllers\Api\InscriptionApiController;
+use App\Http\Controllers\Api\InstructeurApiController;
 use Illuminate\Support\Facades\Route;
 
 // ── Public : accessible a tous, meme sans compte ──
@@ -32,6 +33,10 @@ Route::middleware(['auth:sanctum', 'role:etudiant'])->group(function () {
 // ── Reserve a l'administrateur ──
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::get('/etudiants', [AdminApiController::class, 'etudiants']);
+    Route::get('/instructeurs', [InstructeurApiController::class, 'index']);
+    Route::post('/instructeurs', [InstructeurApiController::class, 'store']);
+    Route::put('/instructeurs/{id}', [InstructeurApiController::class, 'update']);
+    Route::delete('/instructeurs/{id}', [InstructeurApiController::class, 'destroy']);
     // Route::post('/formations', [FormationApiController::class, 'store']);
     // Route::put('/formations/{id}', [FormationApiController::class, 'update']);
     // Route::delete('/formations/{id}', [FormationApiController::class, 'destroy']);

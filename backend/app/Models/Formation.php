@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Formation extends Model
 {
     protected $fillable = [
-        'categorie_id', 'admin_id', 'instructeur',
+        'categorie_id', 'admin_id', 'instructeur', 'instructeur_id',
         'titre', 'description', 'prix', 'niveau', 'duree',
     ];
 
@@ -19,6 +19,11 @@ class Formation extends Model
     public function admin()
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function instructeurRelation()
+    {
+        return $this->belongsTo(Instructeur::class, 'instructeur_id');
     }
 
     public function lecons()
