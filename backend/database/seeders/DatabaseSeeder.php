@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
             CategorieSeeder::class,
             FormationSeeder::class,
             InstructeurSeeder::class,
+            ObjectifsSeeder::class,
+            PrixOriginalSeeder::class,
+            FormationsExtraSeeder::class,
         ]);
     }
 }

@@ -8,7 +8,11 @@ class Formation extends Model
 {
     protected $fillable = [
         'categorie_id', 'admin_id', 'instructeur', 'instructeur_id',
-        'titre', 'description', 'prix', 'niveau', 'duree',
+        'titre', 'description', 'objectifs', 'prix', 'prix_original', 'niveau', 'duree',
+    ];
+
+    protected $casts = [
+        'objectifs' => 'array',
     ];
 
     public function categorie()

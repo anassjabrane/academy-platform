@@ -9,7 +9,7 @@ class CategorieSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach (['Marketing & Créatif', 'Développement & Code', 'Technologies Avancées'] as $nom) {
+        foreach (['Marketing & Créatif', 'Développement & Code', 'Technologies Avancées', 'Business & Carrière', 'Bureautique'] as $nom) {
             Categorie::firstOrCreate(['nom' => $nom]);
         }
     }

@@ -14,7 +14,7 @@ class FormationApiController extends Controller
     public function index()
     {
         $formations = Formation::with('categorie')
-            ->withCount('avis')
+            ->withCount(['avis', 'inscriptions'])
             ->withAvg('avis', 'note')
             ->get();
 
@@ -26,8 +26,14 @@ class FormationApiController extends Controller
      */
     public function show($id)
     {
-        $formation = Formation::with(['categorie', 'lecons', 'avis.etudiant'])
+        $formation = Formation::with(['categorie', 'lecons', 'avis.etudiant', 'instructeurRelation'])
+            ->withCount(['avis', 'inscriptions'])
+            ->withAvg('avis', 'note')
             ->findOrFail($id);
+
+        if ($formation->instructeurRelation) {
+            $formation->instructeurRelation->loadCount('formations');
+        }
 
         return response()->json($formation);
     }
